@@ -44,6 +44,7 @@ function grads(nlp::ASNLPM, x::AbstractVector{T}; sample::AbstractVector{Int} = 
     return gs
 end
 
+
 function bhhh!(nlp::ASNLPM, x::AbstractVector, B::AbstractMatrix; sample::AbstractVector{Int} = [-1])
     @warm "bhhh! not extended for model of type $(typeof(nlp))"
 end
