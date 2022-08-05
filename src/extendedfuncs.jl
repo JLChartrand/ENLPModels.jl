@@ -12,7 +12,7 @@ Evaluate ``[f_{k_1}(x), f_{k_2}(x), ..., f_{k_N}(x)]``, the objective function o
 in values. If inplace is true: f_{k_i} is stored at values[k_i], otherwise: f_{k_i} is stored at values[i]
 """
 function objs!(nlp::ASNLPM, x::AbstractVector, values::AbstractVector; sample::AbstractVector{Int} = [-1], inplace::Bool = false) 
-    @warm "objs! not extended for model of type $(typeof(nlp))"
+    @warn "objs! not extended for model of type $(typeof(nlp))"
 end
 """
     f = objs(nlp, x, values; sample)
@@ -31,7 +31,7 @@ in the matrix gs. If inplace is true: df_{k_i}(x) is stored at gs[:, k_i] (the k
 i-th colomn of the matrix gs)
 """
 function grads!(nlp::ASNLPM, x::AbstractVector, gs::AbstractMatrix; sample::AbstractVector{Int} = [-1], inplace::Bool = false)
-    @warm "grads! not extended for model of type $(typeof(nlp))"
+    @warn "grads! not extended for model of type $(typeof(nlp))"
 end
 """
     gs = grads(nlp, x; sample, inplace)
@@ -46,7 +46,7 @@ end
 
 
 function bhhh!(nlp::ASNLPM, x::AbstractVector, B::AbstractMatrix; sample::AbstractVector{Int} = [-1])
-    @warm "bhhh! not extended for model of type $(typeof(nlp))"
+    @warn "bhhh! not extended for model of type $(typeof(nlp))"
 end
 function bhhh(nlp::ASNLPM, x::AbstractVector{T}; sample::AbstractVector{Int} = [-1]) where T
     @lencheck nlp.meta.nvar x
