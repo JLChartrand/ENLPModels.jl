@@ -43,7 +43,9 @@ function grads(nlp::ASNLPM, x::AbstractVector{T}; sample::AbstractVector{Int} = 
     grads!(nlp, x, gs; sample = sample, inplace = false)
     return gs
 end
-
+function hess!(nlp::ASNLPM, x::AbstractVector, B::AbstractMatrix; sample::AbstractVector{Int} = [-1])
+    @warn "hess! not extended for model of type $(typeof(nlp))"
+end
 
 function bhhh!(nlp::ASNLPM, x::AbstractVector, B::AbstractMatrix; sample::AbstractVector{Int} = [-1])
     @warn "bhhh! not extended for model of type $(typeof(nlp))"
