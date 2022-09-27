@@ -5,7 +5,9 @@ Base type for metadata related to a stochastic optimization model.
 abstract type AbstractStochasticNLPModels{T, S} <: AbstractNLPModel{T, S} end
 #a simpler name
 const ASNLPM = AbstractStochasticNLPModels
-
+function nobs(nlp::ASNLPM)::Int
+    @warn "nobs not extended for model of type $(typeof(nlp))"
+end
 """
     f = objs!(nlp, x, values; sample, inplace)
 Evaluate ``[f_{k_1}(x), f_{k_2}(x), ..., f_{k_N}(x)]``, the objective function of `nlp` at `x` for all k_i in sample and stores it
