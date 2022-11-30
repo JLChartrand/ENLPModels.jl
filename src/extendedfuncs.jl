@@ -57,8 +57,11 @@ function bhhh(nlp::ASNLPM, x::AbstractVector{T}; sample::AbstractVector{Int} = [
     B = array{T, 2}(undef, length(x), length(x))
     bhhh!(nlp, x, B; sample = sample)
 end
-
-#=
-#TODO
-function hess! end
-=#
+function bhhhprodv!(nlp::ASNLPM, x::AbstractVector, ac::AbstractVector, v::AbstractVector; sample::AbstractVector{Int} = [-1])
+    @warn "bhhhprodv! not extended for model of type $(typeof(nlp))"
+end
+function bhhhprodv(nlp::ASNLPM, x::AbstractVector{T}, v::AbstractVector; sample::AbstractVector{Int} = [-1]) where T
+    @lencheck nlp.meta.nvar x
+    ac = array{T, 1}(undef, length(x))
+    bhhhprodv!(nlp, x, ac, v; sample = sample)
+end
